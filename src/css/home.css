@@ -1,0 +1,19 @@
+.introduction {
+    text-align: left;
+    width: 52%;
+    margin-top: 14%;
+    margin-left: 3%;
+}
+
+.introduction h1 {
+    color: white;
+    letter-spacing: 5px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.introduction p {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
