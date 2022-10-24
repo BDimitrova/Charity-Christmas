@@ -1,0 +1,27 @@
+{
+  "name": "charity-christmas",
+  "version": "1.0.0",
+  "description": "JS Back-End Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BDimitrova/Charity-Christmas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BDimitrova/Charity-Christmas/issues"
+  },
+  "homepage": "https://github.com/BDimitrova/Charity-Christmas#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6"
+  }
+}
