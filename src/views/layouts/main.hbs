@@ -17,13 +17,15 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/toys/catalog">Catalog</a></li>
                 <!--For loggin users-->
+                {{#if user}}
                 <li><a href="/toys/create-toy">Create Toy</a></li>
                 <li><a href="/toys/search">Search</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
                 <!--For guest user-->
+                {{else}}
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/auth/register">Register</a></li>
-
+                {{/if}}
             </ul>
 
         </nav>
