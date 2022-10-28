@@ -61,4 +61,11 @@ router.post('/:toyId/edit', async (req, res) => {
 
 });
 
+router.get('/:toyId/delete', async (req, res) => {
+    const toyId = req.params.toyId;
+    await toysServices.delete(toyId);
+    res.redirect('/toys/catalog');
+})
+
+
 module.exports = router;
