@@ -28,10 +28,37 @@ router.get('/:toyId/details', async (req, res) => {
 
     let isOwner = toyData.owner == req.user?._id;
     let buyer = toy.getBuying();
-    
+
     let isBought = req.user && buyer.some(c => c._id == req.user?._id);
 
     res.render('toys/details', { ...toyData, isOwner, isBought });
-})
+});
+
+router.get('/:toyId/buy', async (req, res) => {
+    const toyId = req.params.toyId
+    let toy = await toysServices.getOne(toyId);
+
+    toy.buyingList.push(req.user._id);
+    await toy.save();
+    res.redirect(`/toys/${req.params.toyId}/details`);
+});
+
+router.get('/:toyId/edit', async (req, res) => {
+    const toyId = req.params.toyId
+    let toy = await toysServices.getOne(toyId);
+    res.render('toys/edit', { ...toy.toObject() })
+});
+
+router.post('/:toyId/edit', async (req, res) => {
+    try {
+        const toyId = req.params.toyId;
+        const toyData = req.body;
+        await toysServices.update(toyId, toyData);
+        res.redirect(`/toys/${toyId}/details`);
+    } catch (error) {
+        res.render('toys/edit', error)
+    }
+
+});
 
 module.exports = router;

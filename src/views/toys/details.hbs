@@ -11,12 +11,12 @@
         {{#if user}}
         <div class="buttons">
             {{#if isOwner}}
-            <a href="/{{_id}}/edit" class="edit-btn">Edit</a>
-            <a href="/{{_id}}/delete" class="delete-btn">Delete</a>
+            <a href="/toys/{{_id}}/edit" class="edit-btn">Edit</a>
+            <a href="/toys/{{_id}}/delete" class="delete-btn">Delete</a>
             {{else if isBought}}
             <p><span class="buy">Thank You For Your Purchase :)</span></p>
             {{else}}
-            <a href="/{{_id}}/buy" class="buy-btn">Buy</a>
+            <a href="/toys/{{_id}}/buy" class="buy-btn">Buy</a>
             {{/if}}
         </div>
         {{/if}}
