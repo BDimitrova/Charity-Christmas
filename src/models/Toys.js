@@ -4,10 +4,12 @@ let toysSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
+        minLength: 10,
     },
     charity: {
         type: String,
         required: true,
+        minLength: 2,
     },
     image: {
         type: String,
@@ -17,14 +19,18 @@ let toysSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
+        minLength: 10,
+        maxLength: 100
     },
     category: {
         type: String,
         required: true,
+        minLength: 5,
     },
     price: {
         type: Number,
         required: true,
+        minValue: 0,
     },
     buyingList: [
         {

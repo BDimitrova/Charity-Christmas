@@ -12,3 +12,14 @@ exports.getMyWishBook = (userId) => Toys.find({ buyingList: userId}).lean();
 exports.update = (toyId, toyData) => Toys.findByIdAndUpdate(toyId, toyData);
 
 exports.delete = (toyId) => Toys.findByIdAndDelete(toyId);
+
+exports.search = (toyTitle, toyCharity) => {
+    if (toyTitle) {
+        return (Toys.find({ title: {$regex: toyTitle, $options: 'i'} }).lean());
+    }
+
+    if (!toyTitle && toyCharity) {
+        return (Toys.find({ toyCharity: toyCharity }).lean());
+    }
+
+}

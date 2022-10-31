@@ -17,7 +17,7 @@ router.post('/create-toy', async (req, res) => {
         res.redirect('/toys/catalog');
     } catch (error) {
         console.log(error);
-        res.render('toys/create', error);
+        res.render('toys/create', { error: error.message});
     }
 });
 
@@ -56,7 +56,7 @@ router.post('/:toyId/edit', async (req, res) => {
         await toysServices.update(toyId, toyData);
         res.redirect(`/toys/${toyId}/details`);
     } catch (error) {
-        res.render('toys/edit', error)
+        res.render('toys/edit', { error: error.message})
     }
 
 });
@@ -65,6 +65,19 @@ router.get('/:toyId/delete', async (req, res) => {
     const toyId = req.params.toyId;
     await toysServices.delete(toyId);
     res.redirect('/toys/catalog');
+});
+
+router.get('/search', async (req, res) => {
+    let toyTitle = req.query.toyTitle;
+    let toyCharity = req.query.toyCharity;
+
+    let toy = await toysServices.search(toyTitle, toyCharity);
+
+    if(toy == undefined) {
+        toy = await toysServices.getAll();
+    }
+
+    res.render('toys/search', {toy});
 })
 
 

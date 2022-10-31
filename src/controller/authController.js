@@ -19,7 +19,7 @@ router.post('/login', isGuest, async (req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token);
         res.redirect('/');
     } catch (error) {
-        res.render('auth/login', error);
+        res.render('auth/login', { error: error.message});
     }
 
 });
@@ -46,7 +46,7 @@ router.post('/register', isGuest, async (req, res) => {
 
         res.redirect('/')
     } catch (error) {
-        res.render('auth/register', error);
+        res.render('auth/register', { error: error.message});
     }
 
 });
